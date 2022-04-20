@@ -19,13 +19,26 @@ public class BaseTests {
 
     @BeforeClass
     public void setUp(){
-        System.setProperty("webdriver.chrome.driver", "C:/Kristina/javaprojects/webdriver_java/resources/chromedriver.exe");
+        setOS();
         driver = new ChromeDriver();
         goHome();
-
         homePage = new HomePage(driver);
     }
 
+    @BeforeMethod
+    public void setOS(){
+        String OS = System.getProperty("os.name");
+        switch (OS){
+            case "Linux":
+                System.setProperty("webdriver.chrome.driver", "/home/kegorova/IdeaProjects/automation_learning/resources/chromedriver_linux_100");
+                break;
+            case "Windows":
+                System.setProperty("webdriver.chrome.driver", "C:/Kristina/javaprojects/webdriver_java/resources/chromedriver.exe");
+                break;
+            default:
+                System.out.println("can't set webdriver, check folder resources");
+        }
+    }
     @BeforeMethod
     public void goHome(){
         driver.get("https://the-internet.herokuapp.com/");

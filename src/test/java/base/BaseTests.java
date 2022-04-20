@@ -32,7 +32,7 @@ public class BaseTests {
             case "Linux":
                 System.setProperty("webdriver.chrome.driver", "/home/kegorova/IdeaProjects/automation_learning/resources/chromedriver_linux_100");
                 break;
-            case "Windows":
+            case "Windows 10":
                 System.setProperty("webdriver.chrome.driver", "C:/Kristina/javaprojects/webdriver_java/resources/chromedriver.exe");
                 break;
             default:

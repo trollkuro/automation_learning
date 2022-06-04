@@ -46,6 +46,21 @@ public class HomePage {
         return new AlertsPage(driver);
     }
 
+    public FileUploadPage clickFileUploadPage(){
+        clickLink("File Upload");
+        return new FileUploadPage(driver);
+    }
+
+    public ModalWindowPage clickModalWindowPage(){
+        clickLink("Entry Ad");
+        return new ModalWindowPage(driver);
+    }
+
+    public ContextMenuPage clickContextMenuPage(){
+        clickLink("Context Menu");
+        return new ContextMenuPage(driver);
+    }
+
     private void clickLink(String linkText){
         driver.findElement(By.linkText(linkText)).click();
     }

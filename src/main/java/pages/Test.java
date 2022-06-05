@@ -21,10 +21,13 @@ public class Test {
         System.out.println(modalTitle + '\n' + modalClose.getText());
         modalClose.click(); */
 
-        WebDriver driver = new ChromeDriver();
-        driver.get("http://the-internet.herokuapp.com/context_menu");
-        Actions actions = new Actions(driver);
-        actions.contextClick(driver.findElement(By.id("hot-spot"))).perform();
+        //WebDriver driver = new ChromeDriver();
+        //driver.get("http://the-internet.herokuapp.com/tinymce");
+        //driver.switchTo().frame(driver.findElement(By.id("mce_0_ifr")));
+        //System.out.println(driver.findElement(By.id("tinymce")).getText());
+        //
+
+
 
     }
 

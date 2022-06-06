@@ -21,11 +21,11 @@ public class Test {
         System.out.println(modalTitle + '\n' + modalClose.getText());
         modalClose.click(); */
 
-        //WebDriver driver = new ChromeDriver();
-        //driver.get("http://the-internet.herokuapp.com/tinymce");
-        //driver.switchTo().frame(driver.findElement(By.id("mce_0_ifr")));
-        //System.out.println(driver.findElement(By.id("tinymce")).getText());
-        //
+        WebDriver driver = new ChromeDriver();
+        driver.get("http://the-internet.herokuapp.com/nested_frames");
+        String text = driver.switchTo().frame("frame-top").switchTo().frame("frame-left").findElement(By.tagName("body")).getText();
+        System.out.println(text);
+
 
 
 

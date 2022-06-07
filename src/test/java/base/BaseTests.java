@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class BaseTests {
 
@@ -21,8 +22,9 @@ public class BaseTests {
     public void setUp(){
         setOS();
         driver = new ChromeDriver();
+        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         goHome();
-        homePage = new HomePage(driver);
     }
 
     @BeforeMethod
@@ -30,10 +32,10 @@ public class BaseTests {
         String OS = System.getProperty("os.name");
         switch (OS){
             case "Linux":
-                System.setProperty("webdriver.chrome.driver", "/home/kegorova/IdeaProjects/automation_learning/resources/chromedriver_linux_100");
+                System.setProperty("webdriver.chrome.driver", "/home/kegorova/IdeaProjects/automation_learning/resources/linux/chromedriver_102");
                 break;
             case "Windows 10":
-                System.setProperty("webdriver.chrome.driver", "C:/Kristina/javaprojects/webdriver_java/resources/chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", "C:/Kristina/javaprojects/webdriver_java/resources/windows/chromedriver.exe");
                 break;
             default:
                 System.out.println("can't set webdriver, check folder resources");
@@ -42,6 +44,7 @@ public class BaseTests {
     @BeforeMethod
     public void goHome(){
         driver.get("https://the-internet.herokuapp.com/");
+        homePage = new HomePage(driver);
     }
 
     @AfterClass

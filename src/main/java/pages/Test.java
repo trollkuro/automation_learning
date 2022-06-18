@@ -1,10 +1,7 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -18,18 +15,14 @@ public class Test {
 
 
         WebDriver driver = new ChromeDriver();
-        By start = By.cssSelector("#start button");
-        By finish = By.id("finish");
+        By dropdown = By.id("dropdown");
 
-        driver.get("http://the-internet.herokuapp.com/dynamic_loading/2");
+        driver.get("http://the-internet.herokuapp.com/dropdown");
 
-        driver.findElement(start).click();
-        FluentWait wait = new FluentWait(driver);
-        wait.withTimeout(Duration.ofSeconds(5))
-                .ignoring(NoSuchElementException.class)
-                .pollingEvery(Duration.ofSeconds(1));
-        wait.until(ExpectedConditions.presenceOfElementLocated(finish));
-        System.out.println(driver.findElement(finish).getText());
+        WebElement dropdownElement = driver.findElement(dropdown);
+        String script = "arguments[0].setAttribute('multiple', '')";
+        ((JavascriptExecutor)driver).executeScript(script, dropdownElement);
+
 
         /*
          WebDriverWait wait = new WebDriverWait(driver, 7);

@@ -14,4 +14,9 @@ public class JavaScriptTests extends BaseTests {
     public void testScrollToFifthParagraph(){
         homePage.clickInfiniteScroll().scrollToParagraph(5);
     }
+
+    @Test
+    public void testDropDownToMultiple(){
+        homePage.clickDropDown().setDropDownMultiple();
+    }
 }

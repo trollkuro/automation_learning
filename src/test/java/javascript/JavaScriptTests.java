@@ -3,6 +3,11 @@ package javascript;
 import base.BaseTests;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
 public class JavaScriptTests extends BaseTests {
 
     @Test
@@ -17,6 +22,16 @@ public class JavaScriptTests extends BaseTests {
 
     @Test
     public void testDropDownToMultiple(){
-        homePage.clickDropDown().setDropDownMultiple();
+        var dropdownPage = homePage.clickDropDown();
+        dropdownPage.setDropDownMultiple();
+
+        var optionsToSelect = List.of("Option 1","Option 2");
+        optionsToSelect.forEach(dropdownPage::selectFromDropDown);
+
+        var selectedOptions = dropdownPage.getSelectedOption();
+        assertTrue(selectedOptions.containsAll(optionsToSelect), "Options are not selected");
+        assertEquals(selectedOptions.size(), optionsToSelect.size(), "Number of selected options is different");
+
+
     }
 }

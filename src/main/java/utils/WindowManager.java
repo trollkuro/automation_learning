@@ -43,8 +43,11 @@ public class WindowManager {
             if(tabTitle.equals(driver.getTitle())){
                 break;
             }
-
         }
+    }
 
+    public void switchToNewOpenedTab(){
+        var windows = driver.getWindowHandles();
+        windows.forEach(driver.switchTo()::window);
     }
 }

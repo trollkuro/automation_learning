@@ -9,19 +9,29 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Set;
 
 public class Test {
 
+
     public static void main (String[] args){
-        System.setProperty("webdriver.chrome.driver", "/home/kegorova/IdeaProjects/automation_learning/resources/linux/chromedriver_102");
+        //System.setProperty("webdriver.chrome.driver", "/home/kegorova/IdeaProjects/automation_learning/resources/linux/chromedriver_102");
+        System.setProperty("webdriver.chrome.driver", "C:/Kristina/javaprojects/webdriver_java/resources/windows/chromedriver 103.0.5060.134.exe");
 
 
         WebDriver driver = new ChromeDriver();
-        driver.get("http://the-internet.herokuapp.com/dynamic_loading");
-        By example2 = By.xpath(".//a[contains(@href, 'dynamic_loading/2')]");
+        driver.get("http://the-internet.herokuapp.com/");
+        Set<Cookie> cookies = driver.manage().getCookies();
+        for (Cookie cookie: cookies) {
+            System.out.println(cookie + "\n");
+        }
+        driver.manage().deleteCookieNamed("optimizelyBuckets");
+
+
+        /* By example2 = By.xpath(".//a[contains(@href, 'dynamic_loading/2')]");
         driver.findElement(example2).sendKeys(Keys.LEFT_CONTROL, Keys.RETURN);
         var windows = driver.getWindowHandles();
-        windows.forEach(driver.switchTo()::window);
+        windows.forEach(driver.switchTo()::window); */
 
 
         /*By dropdown = By.id("dropdown");
@@ -43,9 +53,6 @@ public class Test {
         System.out.println(driver.findElement(finish).getText());
          */
 
-        /*
-
-         */
 
 
 
